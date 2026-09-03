@@ -1,0 +1,177 @@
+/* Estilos generales */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 20px;
+  background-color: #f4f4f4;
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+}
+
+form {
+  background-color: #fdfbfb;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin: auto;
+}
+
+.input-group1,
+.input-group,
+.input-group2,
+.input-group3 {
+  margin-bottom: 20px;
+}
+
+.input-group1 label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.input-group1 select {
+  width: 100%;
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.input-group2 label,
+.input-group3 label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.input-group2 input[type="number"],
+.input-group3 input[type="number"] {
+  width: 70%;
+  padding: 6px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+.modal-content label{
+  display: block;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* Estilos de la tabla */
+.table-container {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+th,
+td {
+  padding: 8px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+td input[type="text"],
+td input[type="number"] {
+  width: 100%;
+  padding: 6px;
+  box-sizing: border-box;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+/* Estilos de los botones */
+.input-group input[type="submit"],
+.input-group input[type="button"],
+.modal-content button {
+  padding: 8px 16px;
+  margin: 5px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.input-group input[type="submit"],
+.input-group input[type="button"],
+.modal-content button {
+  background-color: #007BFF;
+  color: white;
+}
+
+.input-group input[type="submit"]:hover,
+.input-group input[type="button"]:hover,
+.modal-content button:hover {
+  opacity: 0.9;
+}
+
+/* Estilo del botón 'Clear' */
+.clear-button {
+  background-color: #007BFF;
+}
+
+/* Modal styles */
+.modal {
+  display: none; 
+  position: fixed; 
+  z-index: 1; 
+  padding-top: 60px; 
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto; 
+  background-color: rgb(0,0,0); 
+  background-color: rgba(0,0,0,0.4); 
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto; 
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+.close-button {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close-button:hover,
+.close-button:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#conductorsTable {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+#conductorsTable th,
+#conductorsTable td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#conductorsTable th {
+  background-color: #f2f2f2;
+  text-align: center;
+}
