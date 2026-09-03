@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>L1</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <h1>Upload Excel File</h1>
+    <form action="/process" method="post" enctype="multipart/form-data">
+        <input type="file" name="inputFile" accept=".xlsx, .xls">
+        <button type="submit">Process File</button>
+    </form>
+    {% if message %}
+        <p>{{ message }}</p>
+    {% endif %}
+
+    <h1>TRANSMISSION LINE LIGHTNING PERFORMANCE</h1>
+    <form id="dataForm" action="/submit" method="post">
+        <div class="input-group1">
+            <input type="radio" name="selected_option" id="huey" value="Single Option for Single Circuit" onclick="showHideInputs()" />
+            <label for="huey">Single Circuit</label><br>
+            <input type="radio" name="selected_option" id="dewey" value="Single Option for Double Circuit" onclick="showHideInputs()" />
+            <label for="dewey">Double Circuit</label><br>
+        </div>
+
+        <div class="input-group17">
+            <label for="number_of_shield_wires">Number of Shield Wires</label><br>
+            <select id="number_of_shield_wires" name="number_of_shield_wires">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+            </select><br><br>
+            <div>
+                <label for="Span_Length">Span Length (m):</label>
+                <input type="number" id="Span_Length" name="Span_Length"><br>
+                <label for="Ground_Flash_Density">Ground Flash Density:</label>
+                <input type="number" step="any" id="Ground_Flash_Density" name="Ground_Flash_Density"><br>
+                <label for="Tower_Surge_Impedance">Tower Surge Impedance:</label>
+                <input type="number" id="Tower_Surge_Impedance" name="Tower_Surge_Impedance"><br>
+            </div>
+        </div><br>
+     
+        <h2>PHASE CONDUCTORS</h2>
+        
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Ph-to-Ph Voltage (kV)</th>
+                        <th>Phase Angle (m)</th>
+                        <th>Horiz. Distance (m)</th>
+                        <th>Height at Tower (m)</th>
+                        <th>Sag (m)</th>
+                        <th>Number</th>
+                        <th>Diameter (cm)</th>
+                        <th>Spacing (cm)</th>
+                        <th>Insulator Length (m)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for i in range(1, 7) %}
+                    <tr>
+                        <td><input type="number" step="any" id="num4_{{ i }}" name="num4_{{ i }}"></td>
+                        <td><input type="number" step="any" id="num5_{{ i }}" name="num5_{{ i }}"></td>
+                        <td><input type="number" step="any" id="num6_{{ i }}" name="num6_{{ i }}"></td>
+                        <td><input type="number" step="any" id="num7_{{ i }}" name="num7_{{ i }}"></td>
+                        <td><input type="number" step="any" id="num8_{{ i }}" name="num8_{{ i }}"></td>
+                        <td><input type="number" step="any" id="num9_{{ i }}" name="num9_{{ i }}"></td>
+                        <td><input type="number" step="any" id="num10_{{ i }}" name="num10_{{ i }}"></td>
+                        <td><input type="number" step="any" id="num11_{{ i }}" name="num11_{{ i }}"></td>
+                        <td><input type="number" step="any" id="num12_{{ i }}" name="num12_{{ i }}"></td>
+                        <td>
+                            <select name="Insulator_Orientation" id="Insulator_Orientation_{{ i }}">
+                                <option value="Vertical">Vertical</option>
+                                <option value="Horizontal">Horizontal</option>
+                                <option value="Vee">Vee</option>
+                            </select>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <p>-----------------------------------------------------------------------------------------------------------------------------------------------------</p>
+        <div class="input-group13">
+            <label for="Shield_Wires">Shield Wires</label><br>
+            <input type="number" step="any" id="Shield_Wires" name="Shield_Wires[]"><br>
+            <input type="number" step="any" id="Shield_Wires" name="Shield_Wires[]"><br>
+            <input type="number" step="any" id="Shield_Wires" name="Shield_Wires[]"><br>
+            <input type="number" step="any" id="Shield_Wires" name="Shield_Wires[]"><br>
+        </div>
+
+        <h3>---------------Tower Footing Resistance Description----------------(See Help)------------------------------------</h3>
+        <div class="input-group14">
+            <label for="num13">Low Frequency No-Ionization Footing Resistance (Ω)</label><br>
+            <input type="number" step="any" id="num13" name="num13"><br>
+        </div>
+
+        <div class="input-group15">
+            <label>Account for Earth Ionization</label><br>
+            <input type="radio" name="selected_option1" id="huey" value="Yes" />
+            <label for="huey">Yes</label><br>
+            <input type="radio" name="selected_option1" id="dewey" value="No" />
+            <label for="dewey">No</label><br>
+        </div>
+
+        <div class="input-group16">
+            <label for="num14">Korsuncev's S Dimension:</label>
+            <input type="number" step="any" id="num14" name="num14"><br>
+            <label for="num15">Earth Resistivity (Ω/m):</label>
+            <input type="number" step="any" id="num15" name="num15"><br>
+            <label for="num16">Earth Critical Ionization Gradient:</label>
+            <input type="number" step="any" id="num16" name="num16"><br>
+        </div>
+        
+        <div class="input-group">
+            <input type="submit" name="submit_button" value="Calculate">
+            <input type="button" name="submit_button" value="Clear" class="clear-button" onclick="clearForm()">
+            <input type="submit" name="submit_button" value="Help" href="/help">
+            <input type="submit" name="submit_button" value="View">
+            <input type="submit" name="submit_button" value="Advanced Options">
+            <input type="submit" name="submit_button" value="Demo" onclick="populateForm(); return false;">
+        </div>
+    </form>
+
+    <script>
+        function clearForm() {
+            document.getElementById('dataForm').reset();
+        }
+
+        function showHideInputs() {
+    const selectedOption = document.querySelector('input[name="selected_option"]:checked').value;
+    const conductorRows = document.querySelectorAll('tbody tr');
+
+    if (selectedOption === 'Single Option for Single Circuit') {
+        for (let i = 3; i < conductorRows.length; i++) {
+            conductorRows[i].style.display = 'none';
+        }
+    } else if (selectedOption === 'Single Option for Double Circuit') {
+        for (let i = 0; i < conductorRows.length; i++) {
+            conductorRows[i].style.display = '';
+        }
+    }
+}
+        
+        function populateForm() {
+            // Shield Wires
+            document.getElementById('number_of_shield_wires').value = 2;
+
+            // General Parameters
+            document.getElementById('Span_Length').value = 250;
+            document.getElementById('Ground_Flash_Density').value = 10;
+            document.getElementById('Tower_Surge_Impedance').value = 200;
+
+            // Phase Conductors
+            const phaseValues = [
+                { num4: 230, num5: -120, num6: -5.0, num7: 30.0, num8: 0.0, num9: 1, num10: 4.00, num11: 0.0, num12: 1.80 },
+                { num4: 230, num5: 0, num6: -5.0, num7: 25.0, num8: 0.0, num9: 1, num10: 4.00, num11: 0.0, num12: 1.80 },
+                { num4: 230, num5: 120, num6: -5.0, num7: 20.0, num8: 0.0, num9: 1, num10: 4.00, num11: 0.0, num12: 1.80 },
+                { num4: 230, num5: 120, num6: 5.0, num7: 30.0, num8: 0.0, num9: 1, num10: 4.00, num11: 0.0, num12: 1.80 },
+                { num4: 230, num5: 0, num6: 5.0, num7: 25.0, num8: 0.0, num9: 1, num10: 4.00, num11: 0.0, num12: 1.80 },
+                { num4: 230, num5: -120, num6: 5.0, num7: 20.0, num8: 0.0, num9: 1, num10: 4.00, num11: 0.0, num12: 1.80 }
+            ];
+
+            for (let i = 0; i < phaseValues.length; i++) {
+                for (let key in phaseValues[i]) {
+                    document.getElementById(`${key}_${i+1}`).value = phaseValues[i][key];
+                }
+            }
+
+            // Shield Wires
+            document.getElementsByName('Shield_Wires[]')[0].value = 0.0;
+            document.getElementsByName('Shield_Wires[]')[1].value = 33;
+            document.getElementsByName('Shield_Wires[]')[2].value = 0.0;
+            document.getElementsByName('Shield_Wires[]')[3].value = 1;
+
+            // Tower Footing Resistance
+            document.getElementById('num13').value = 20;
+
+            // Earth Ionization
+            document.getElementsByName('selected_option1')[0].checked = true;
+
+            // Earth Ionization Parameters
+            document.getElementById('num14').value = 2;
+            document.getElementById('num15').value = 400;
+            document.getElementById('num16').value = 400;
+        }
+    </script>
+</body>
+</html>
