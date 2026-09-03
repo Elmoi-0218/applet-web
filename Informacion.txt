@@ -1,0 +1,33 @@
+ LIGHTNING PERFORMANCE
+ Double circuit line with 1 shield wire 
+ Span length: 250 m
+ Ground Flash Density: 10.0 flashes per square km per year
+ Tower Surge Impedance: 200 ohm
+ Wave velocity down the tower: 300 meter/microsecond
+ Strike Distance Equation used: Strike Distance = 10.0*h^0.00*I^0.65
+        (h is the height of the wire, I is the current of the stroke)
+ Account is made for soil ionization using Korsuncev's method with: 
+          Soil resistivity: 400 ohm meter
+          Soil critical ionization gradient: 400 kV/m
+          Parameter S: 2.0 m
+ 
+                       PHASE WIRE DESCRIPTION
+    .     Ph-to-Ph   Phase   Horizontal   Height  .         --- SUBCONDUCTORS ---      ----Insulator-----   
+ Circuit   Voltage   Angle    Distance   AtTower   Sag   Number   Diameter   Spacing   Length    Orientation
+  (#)       (kV)    (degree)     (m)       (m)     (m)   .          (cm)      (cm)      (m)      (See note)
+  ---       ----     ------     -----     -----    ----    ----     -----     -----     -----        ----   
+    1        230      -120      -5.0       30.0    0.0      1       4.00       0.0       1.80         1
+    1        230         0      -5.0       25.0    0.0      1       4.00       0.0       1.80         1
+    1        230       120      -5.0       20.0    0.0      1       4.00       0.0       1.80         1
+    2        230       120       5.0       30.0    0.0      1       4.00       0.0       1.80         1
+    2        230         0       5.0       25.0    0.0      1       4.00       0.0       1.80         1
+    2        230      -120       5.0       20.0    0.0      1       4.00       0.0       1.80         1
+------ 
+Note: 1 = Vertical insulators; 2 = Horizontal insulators; 3 = Vee 
+ 
+        SHIELD WIRE DESCRIPTION
+ Horizontal Height  
+  Distance AtTower Sag    Diameter 
+    (m)     (m)    (m)     (cm)  
+   -----   -----   -----   ----- 
+  0.0      33.0      0.0    1.00
