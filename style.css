@@ -1,0 +1,168 @@
+General styles
+body {
+  font-family: Arial, sans-serif;
+  background-color: #161616;
+  margin: 0;
+  padding: 20px;
+}
+
+h1 {
+  color: #353434;
+  text-align: center;
+}
+
+form {
+  background-color: #fdfbfb;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin: auto;
+}
+
+h2, h3 {
+  color: #292828;
+  margin-top: 30px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  color: #161616;
+}
+
+input[type="number"],
+input[type="radio"],
+select {
+  display: block;
+  width: calc(100% - 10px);
+  padding: 5px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+input[type="radio"] {
+  width: auto;
+}
+
+select {
+  width: 100%;
+}
+
+.input-group {
+  margin-bottom: 20px;
+}
+
+input[type="submit"] {
+  background-color: #007BFF;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+input[type="submit"]:hover {
+  background-color: #007BFF;
+}
+
+.input-group1,
+.input-group2,
+.input-group3,
+.input-group4,
+.input-group5,
+.input-group6,
+.input-group7,
+.input-group8,
+.input-group9,
+.input-group10,
+.input-group11,
+.input-group12,
+.input-group13,
+.input-group14,
+.input-group15,
+.input-group16,
+.input-group17 {
+  margin-bottom: 20px;
+}
+
+input[type="number"],
+select {
+  max-width: 200px;
+}
+
+.input-group2 p,
+.input-group3 input,
+.input-group4 input,
+.input-group5 input,
+.input-group6 input,
+.input-group7 input,
+.input-group8 input,
+.input-group9 input,
+.input-group10 input,
+.input-group11 input,
+.input-group13 input,
+.input-group14 input,
+.input-group16 input {
+  width: auto;
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.input-group12 select {
+  display: inline-block;
+  width: auto;
+  margin-right: 10px;
+}
+
+.input-group13 input {
+  display: block;
+  width: auto;
+  margin-bottom: 10px;
+}
+
+p {
+  color: #999;
+  text-align: center;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  border-top: 1px solid #ccc;
+  padding-top: 20px;
+}
+
+.clear-button {
+  background-color: #0c81ff; 
+  color: white; 
+  border: none; 
+  padding: 10px 20px; 
+  text-align: center; 
+  text-decoration: none; 
+  display: inline-block; 
+  font-size: 16px; 
+  margin: 4px 2px; 
+  cursor: pointer; 
+  border-radius: 4px; 
+}
+
+.clear-button:hover {
+  background-color: #007BFF; 
+}
+
+
+@media (max-width: 600px) {
+  form {
+      padding: 10px;
+  }
+
+  input[type="number"],
+  input[type="radio"],
+  select {
+      width: 100%;
+  }
+
+  input[type="submit"] {
+      width: 100%;
+      margin-bottom: 10px;
+  }
+}
