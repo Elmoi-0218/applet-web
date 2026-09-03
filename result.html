@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Results</title>
+    <script>
+        function openFile(file_path) {
+            window.open(file_path, '_blank');
+        }
+    </script>
+</head>
+<body>
+    <!-- Mostrar los resultados de los cálculos -->
+    <h1>Calculation Results</h1>
+    <p>Result 1: {{ calculation_results.result1 }}</p>
+    <p>Result 2: {{ calculation_results.result2 }}</p>
+
+    <!-- Botón para abrir el archivo -->
+    <button onclick="openFile('{{ file_path }}')">Open File</button>
+</body>
+</html>
