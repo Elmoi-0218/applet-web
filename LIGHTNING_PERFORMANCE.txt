@@ -1,0 +1,51 @@
+LIGHTNING PERFORMANCE
+Single circuit line with 2 shield wires
+Span length: 333 m
+Ground Flash Density: 9.8 flashes per square km per year
+Tower Surge Impedance: 200 ohm
+Wave velocity down the tower: 300 meter/microsecond
+Strike Distance Equation used: Strike Distance = 10.0*h^0.00*I^0.65
+       (h is the height of the wire, I is the current of the stroke)
+No account is made for soil ionization.
+
+PHASE WIRE DESCRIPTION
+.     Ph-to-Ph   Phase   Horizontal   Height  .         --- SUBCONDUCTORS ---      ----Insulator-----
+Circuit   Voltage   Angle    Distance   AtTower   Sag   Number   Diameter   Spacing   Length    Orientation
+(#)       (kV)    (degree)     (m)       (m)     (m)   .          (cm)      (cm)      (m)      (See note)
+---       ----     ------     -----     -----    ----    ----     -----     -----     -----        ----
+   1        230       -120       3.0       21.1      0.0         1         4.0       0.0       1.8         1
+   1        230          0       -3.0       28.5      0.0         1         4.0       0.0       1.8         1
+   1        230        120       -2.1       24.3      0.0         1         4.0       0.0       1.8         1
+
+SHIELD WIRE DESCRIPTION
+Horizontal Height  
+Distance AtTower Sag  Diameter 
+  (m)     (m)    (m)    (cm)  
+ -----   -----  -----   ----- 
+  -4.5     43.8     16.1    0.98
+ -11.6     34.3     13.2    0.87
+
+RESULTS OF LIGHTNING PERFORMANCE CALCULATIONS
+---------------------------------------------
+
+Flashes to phase wires (shielding failures): 0.1 per 100 km per year
+                  Flashes to shield wire: 154.3 per 100 km per year
+         Total number of flashes to the line: 151.5 per 100 km per year
+
+There are no shielding failures
+                       Minimum current for backflashover: 95 kA
+
+     Flashovers caused by shielding failures: 0.3 per 100 km per year
+                              Backflashovers: 6.9 per 100 km per year
+                  Total number of flashovers: 6.7 per 100 km per year
+
+     Breakdown by Phase
+     ------------------
+.      Shielding    Shiel.Fail.
+  Phase    Failures     Flashovers   Backflashovers
+   (#)   (1/100kmYear) (1/100kmYear) (1/100kmYear)
+    1         0.0           0.0           0.0
+    2         0.0           0.0           5.1
+    3         0.1           0.0           1.8
+
+Total        0.1           0.0           6.0
