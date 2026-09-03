@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AN-1</title>
+    <link rel="stylesheet" href="/static/style.css">
+    
+</head>
+<body>
+    <center><h1>AN-1 Audible Noise of Transmission Lines (2-D)</h1></center>
+    <div class="input-group1">
+        <label for="type_input_data">Type of Input Data</label><br>
+        <select id="type_input_data" name="type_input_data">
+            <option value="0">Choose Input Type</option>
+            <option value="1">Single Conductor</option>
+            <option value="2">Regular Bundle</option>
+            <option value="3">Irregular Bundle</option>
+            <option value="4">3 Phase Circuit with Regular Bundles</option>
+        </select><br><br>
+    </div>
+
+    <!-- Modal for Single Conductor -->
+    <div id="singleConductorFields" class="modal conditionalFields">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <form id="singleConductorForm">
+                <label for="id">Id:</label>
+                <input type="text" id="id" name="id"><br><br>
+                <label for="diameter">Conductor Diameter:</label>
+                <input type="text" id="diameter" name="diameter"><br><br>
+                <label for="voltage">Phase Ground Voltage:</label>
+                <input type="text" id="voltage" name="voltage"><br><br>
+                <label for="angle">Phase Angle:</label>
+                <input type="text" id="angle" name="angle"><br><br>
+                <label for="height">Height Above Ground:</label>
+                <input type="text" id="height" name="height"><br><br>
+                <label for="coordinate">Horizontal Coordinate:</label>
+                <input type="text" id="coordinate" name="coordinate"><br><br>
+                <button type="button" id="addSingleConductor">Add Conductor</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal for Regular Bundle -->
+    <div id="regularBundleFields" class="modal conditionalFields">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <form id="regularBundleForm">
+                <label for="id">Bundle ID (#):</label>
+                <input type="text" id="id" name="id"><br><br>
+                <label for="number">Number of Subconductors:</label>
+                <input type="text" id="number" name="number"><br><br>
+                <label for="diameter">Subconductor Diameter (m):</label>
+                <input type="text" id="diameter" name="diameter"><br><br>
+                <label for="voltage">Voltage to Ground (kV):</label>
+                <input type="text" id="voltage" name="voltage"><br><br>
+                <label for="angle">Phase Angle (degree):</label>
+                <input type="text" id="angle" name="angle"><br><br>
+                <label for="height">Height Above Ground H(m):</label>
+                <input type="text" id="height" name="height"><br><br>
+                <label for="horizontal">Horizontal Coordinate X(m):</label>
+                <input type="text" id="horizontal" name="horizontal"><br><br>
+                <label for="spacing">Subconductor Spacing (m) or Bundle Diameter (cm):</label>
+                <input type="text" id="spacing" name="spacing"><br><br>
+                <button type="button" id="addRegularBundle">Add Bundle</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal for Irregular Bundle -->
+    <div id="irregularBundleFields" class="modal conditionalFields">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <form id="irregularBundleForm">
+                <label for="id">Bundle ID (#):</label>
+                <input type="text" id="id" name="id"><br><br>
+                <label for="voltage">Voltage to Ground (kV):</label>
+                <input type="text" id="voltage" name="voltage"><br><br>
+                <label for="angle">Phase Angle (degree):</label>
+                <input type="text" id="angle" name="angle"><br><br>
+                <hr>
+                <p>Bundle Reference Point</p>
+                <label for="height">Height Above Ground H(m):</label>
+                <input type="text" id="height" name="height"><br><br>
+                <label for="horizontal">Horizontal Coordinate X(m):</label>
+                <input type="text" id="horizontal" name="horizontal"><br><br>
+                <hr>
+                <p>Individual Conductor Coordinates</p>
+                <label for="diameter">Diameter (cm):</label>
+                <input type="text" id="diameter" name="diameter"><br><br>
+                <label for="XR">Horizontal to Reference Point XR(cm):</label>
+                <input type="text" id="XR" name="XR"><br><br>
+                <label for="HR">Vertical to Reference Point HR(cm):</label>
+                <input type="text" id="HR" name="HR"><br><br>
+                <hr>
+                <center><p>List of Conductors</p></center>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Diameter (cm)</th>
+                            <th>XR(cm)</th>
+                            <th>HR(cm)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for i in range(1, 9) %}
+                        <tr>
+                            <td><input type="text" step="any" id="diameter_{{ i }}" name="diameter_{{ i}}"></td>
+                            <td><input type="text" step="any" id="XR_{{ i }}" name="XR_{{ i }}"></td>
+                            <td><input type="text" step="any" id="HR_{{ i }}" name="HR_{{ i }}"></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                    <button type="button" id="addIrregularBundle">Add Bundle</button>
+                    <button type="button" id="addIrregularBundle">Add Conductor</button>
+                    <button type="button" id="addIrregularBundle">Delete Conductor</button>
+                    <button type="button" id="addIrregularBundle">View Conductor</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Fields for 3 Phase Circuit -->
+    <div id="threePhaseFields" class="modal conditionalFields">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <form id="threePhaseForm">
+                <label for="id">Circuit ID(#):</label>
+                <input type="text" id="id" name="id"><br><br>
+                <label for="voltage">Phase To Phase Voltage(kV):</label>
+                <input type="text" id="voltage" name="voltage"><br><br>
+                <label for="phase">Number of Conductor per Phase(#):</label>
+                <input type="text" id="phase" name="phase"><br><br>
+                <label for="subdiameter">Subconductor Diameter(cm):</label>
+                <input type="text" id="subdiameter" name="subdiameter"><br><br>
+                <label for="spacing2">Subconductor Spacing (m) or Bundle Diameter (cm):</label>
+                <input type="text" id="spacing2" name="spacing2"><br><br>
+                <button type="button" id="addThreePhase">Add Circuit</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Main Form -->
+    <div class="input-group2">
+        <form id="dataForm" action="/submit" method="post">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Bundle ID (#)</th>
+                        <th>Number of Subconductors</th>
+                        <th>Subconductors Diameter(cm)</th>
+                        <th>Voltage to Ground(kV)</th>
+                        <th>Phase Angle(degree)</th>
+                        <th>Horizontal Coordinate(m)</th>
+                        <th>Height above Ground(m)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for i in range(1, 9) %}
+                    <tr>
+                        <td><input type="text" step="any" id="num4_{{ i }}" name="num4_{{ i }}"></td>
+                        <td><input type="number" step="any" id="num5_{{ i }}" name="num5_{{ i }}"></td>
+                        <td><input type="number" step="any" id="num6_{{ i }}" name="num6_{{ i }}"></td>
+                        <td><input type="number" step="any" id="num7_{{ i }}" name="num7_{{ i }}"></td>
+                        <td><input type="number" step="any" id="num8_{{ i }}" name="num8_{{ i }}"></td>
+                        <td><input type="number" step="any" id="num9_{{ i }}" name="num9_{{ i }}"></td>
+                        <td><input type="number" step="any" id="num10_{{ i }}" name="num10_{{ i }}"></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <hr/>
+            <div class="input-group3">
+                <label for="num11">XB(m):</label>
+                <input type="number" step="any" id="num11" name="num11"><br><br>
+                <label for="num12">XE(m):</label>
+                <input type="number" step="any" id="num12" name="num12"><br><br>
+                <label for="num13">Numbers of Increments:</label>
+                <input type="number" step="any" id="num13" name="num13"><br><br>
+                <label for="num14">Altitude(m):</label>
+                <input type="number" step="any" id="num14" name="num14"><br><br>
+                <label for="num15">Height Above Ground(m):</label>
+                <input type="number" step="any" id="num15" name="num15"><br><br>
+            </div>
+            <div class="input-group">
+                <input type="submit" name="submit_button" value="Calculate">
+                <input type="button" name="submit_button" value="Clear" class="clear-button" onclick="clearForm()">
+                <input type="submit" name="submit_button" value="Help" formaction="/help">
+                <input type="submit" name="submit_button" value="View">
+                <input type="submit" name="submit_button" value="Demo" onclick="populateForm(); return false;">
+            </div>
+        </form>
+    </div>       
+
+    <script>
+        function clearForm() {
+            document.getElementById('dataForm').reset();
+        }
+
+        function populateForm() {
+            const phaseValues = [
+                { num4: '1A', num5: 3, num6: 3.31, num7: 303.1, num8: 0.0, num9: -5.00, num10: 27.00 },
+                { num4: '1B', num5: 3, num6: 3.31, num7: 303.1, num8: -120.0, num9: -7.50, num10: 20.50},
+                { num4: '1C', num5: 3, num6: 3.31, num7: 303.1, num8: 120.0, num9: -5.00, num10: 14.00},
+                { num4: '2A', num5: 2, num6: 4.07, num7: 303.1, num8: 0.0, num9: 5.00, num10: 14.00},
+                { num4: '2B', num5: 2, num6: 4.07, num7: 303.1, num8: -120.0, num9: 7.50, num10: 20.00},
+                { num4: '2C', num5: 2, num6: 4.07, num7: 303.1, num8: 120.0, num9: 5.00, num10: 27.00},
+                { num4: '3', num5: 1, num6: 1.10, num7: 0.0, num8: 0.0, num9: -3.00, num10: 35.00},
+                { num4: '4', num5: 1, num6: 1.10, num7: 0.0, num8: 0.0, num9: -3.00, num10: 35.00}
+            ];
+
+            for (let i = 0; i < phaseValues.length; i++) {
+                for (let key in phaseValues[i]) {
+                    document.getElementById(`${key}_${i+1}`).value = phaseValues[i][key];
+                }
+            }
+        }
+
+        document.getElementById('type_input_data').addEventListener('change', function() {
+            let selectedValue = this.value;
+            document.querySelectorAll('.conditionalFields').forEach(field => field.style.display = 'none');
+            if (selectedValue == '1') {
+                document.getElementById('singleConductorFields').style.display = 'block';
+            } else if (selectedValue == '2') {
+                document.getElementById('regularBundleFields').style.display = 'block';
+            } else if (selectedValue == '3') {
+                document.getElementById('irregularBundleFields').style.display = 'block';
+            } else if (selectedValue == '4') {
+                document.getElementById('threePhaseFields').style.display = 'block';
+            }
+        });
+
+        document.querySelectorAll('.close-button').forEach(button => {
+            button.onclick = function() {
+                button.parentElement.parentElement.style.display = 'none';
+            }
+        });
+
+        window.onclick = function(event) {
+            document.querySelectorAll('.modal').forEach(modal => {
+                if (event.target == modal) {
+                    modal.style.display = 'none';
+                }
+            });
+        }
+
+        document.getElementById('addSingleConductor').onclick = function() {
+            // Add Conductor logic for Single Conductor
+        }
+
+        document.getElementById('addRegularBundle').onclick = function() {
+            // Add Conductor logic for Regular Bundle
+        }
+
+        document.getElementById('addIrregularBundle').onclick = function() {
+            // Add Conductor logic for Irregular Bundle
+        }
+
+        document.getElementById('addThreePhase').onclick = function() {
+            // Add Conductor logic for 3 Phase Circuit
+        }
+
+        // Initialize by hiding all conditional fields
+        document.querySelectorAll('.conditionalFields').forEach(field => field.style.display = 'none');
+    </script>
+</body>
+</html>
